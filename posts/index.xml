@@ -1,0 +1,145 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Your DeFi-enabled mixer 🚜</title><link>/posts/</link><description>Recent content in Posts on Your DeFi-enabled mixer 🚜</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 05 Oct 2020 12:42:00 +0200</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Blender + Aave = ❤️</title><link>/posts/aave/</link><pubDate>Mon, 05 Oct 2020 12:42:00 +0200</pubDate><guid>/posts/aave/</guid><description>Each Blender pool is likely to amass non-negigible amounts of assets. The pool sizes will probably remain below the sizes of lending/borrowing and exchange protocols, yet its hard to estimate their resulting sizes.
+By observing Tornado Cash&amp;rsquo;s contracts, you can see that the 100 ETH pool amounted at an all-time-high to about 6 million USD. One way to put those dormant funds to work, is to use a lending platform.</description><content type="html"><![CDATA[<p>Each Blender pool is likely to amass non-negigible amounts of assets. The pool sizes will probably remain below the sizes of lending/borrowing and exchange protocols, yet its hard to estimate their resulting sizes.</p>
+<p>By observing Tornado Cash&rsquo;s contracts, you can see that the 100 ETH pool amounted at an all-time-high to about 6 million USD. One way to put those dormant funds to work, is to use <strong>a lending platform</strong>.</p>
+<p>Your deposited ETH in Blender will therefore further be deposited into <strong>Aave</strong> to earn interest rates. Please see our risk section in the FAQ if you&rsquo;re worried about possible <a href="/posts/faq/">privacy implications</a> of interest payments.</p>
+]]></content></item><item><title>FAQ</title><link>/posts/faq/</link><pubDate>Sun, 04 Oct 2020 12:42:00 +0200</pubDate><guid>/posts/faq/</guid><description>How does Blender work? Blender is a privacy-enhancing pool, in which you deposit from one Ethereum address, and you withdraw out to another address. The link between your deposit and withdraw address can therefore be hidden. You can only use fixed sized amounts for deposit, and you can only withdraw the same amount you deposited. The technology behind this is based on zk-SNARKS. Your privacy, or anonymity depends on how many different users deposit in the pool.</description><content type="html"><![CDATA[<h2 id="how-does-blender-work">How does Blender work?</h2>
+<p>Blender is a privacy-enhancing pool, in which you deposit from one Ethereum address, and you withdraw out to another address. The link between your deposit and withdraw address can therefore be hidden. You can only use fixed sized amounts for deposit, and you can only withdraw the same amount you deposited. The technology behind this is based on zk-SNARKS. Your privacy, or anonymity depends on how many different users deposit in the pool.</p>
+<p>In addition to offering privacy, Blender deposits your ETH into Aave for you to earn an interest rate. In addition to the interests, if you keep a deposit in Blender for at least <code>5</code> days (36&rsquo;000 blocks), you&rsquo;re eligible to receive a <code>BLND</code> token reward before issuing a withdraw. To be able to farm, there needs to happen <em>at least one deposit</em> in your pool on the 5th day of your deposit age.</p>
+<h2 id="where-is-the-code">Where is the code?</h2>
+<p>Blender&rsquo;s code is open source on Github: <a href="https://github.com/ourblender/ourblender.github.io">https://github.com/ourblender/ourblender.github.io</a></p>
+<h2 id="how-much-does-it-cost-to-use-blender">How much does it cost to use Blender?</h2>
+<ul>
+<li>Deposit: ~885k Gas</li>
+<li>Withdrawal: ~385k Gas</li>
+<li>BLND Farming: ~335k Gas</li>
+</ul>
+<h2 id="how-fast-can-i-generate-the-zk-snark-proof">How fast can I generate the zk-SNARK proof?</h2>
+<p>Proof generation times measured on standard hardware:</p>
+<ul>
+<li>Withdraw: 5 seconds</li>
+<li>Farming: 2.5 seconds</li>
+</ul>
+<h2 id="how-did-you-do-the-trusted-setup">How did you do the trusted setup?</h2>
+<p>The trusted setup is planned to be repeated in a decentralized fashion, similar to how Tornado Cash has beautifully shown how it&rsquo;s done.</p>
+<h2 id="what-is-an-anonymity-set">What is an anonymity set?</h2>
+<p>An anonymity set is a number of other addresses, or users, from which a withdrawal could originate from. If there are 999 other addresses that deposited, and you have 1 deposit from your address in Blender, the anonymity set size is 1000. That means that if you withdraw your coins, then an external observer would have to guess with a probability of 1/1000 to find your address (ignoring other side channels).</p>
+<h2 id="what-is-a-relayer-and-why-should-i-use-it">What is a relayer and why should I use it?</h2>
+<p>To withdraw, or farm, you need to pay gas. The gas you pay should <strong>not</strong> be coming from your deposit address, otherwise an external observer can link your deposit to your withdrawal address. Hence you can ask a relayer to pay for your gas. A relayer can be used for both the withdrawal and your redeem transaction.</p>
+<p>Please help and extend Blender with a relayer for other users. Feel free to reach out in the <a href="https://t.me/joinchat/AAAAAFg3cEF0lTg4RXP6FA">Telegram group</a> for any questions, and you can create a DAO proposal to become a relayer and be incentivised by the DAO.</p>
+<h2 id="how-is-blender-different-from-tornado-cash">How is Blender different from Tornado Cash?</h2>
+<p>Blender was inspired by Tornado Cash and is a fork. There are three notable changes:</p>
+<ol>
+<li>Blender deposits user assets into Aave to yield interests while mixing.</li>
+<li>Blender reduces the gas costs by using the Poseidon hash function.</li>
+<li>Blender introduces a governance token <code>BLND</code> to incentivise participants to deposit and govern the system.</li>
+</ol>
+<h2 id="how-can-i-get-blnd-tokens">How can I get <code>BLND</code> tokens?</h2>
+<p>The preferred way to earn <code>BLND</code> tokens, is by depositing coins into a pool and keep them in there for at least 5 days (36&rsquo;000 Blocks). The you can farm <code>BLND</code> tokens with your Blender note, and then you can withdraw your deposit. If you don&rsquo;t want to deposit into Blender, you can also likely purchase <code>BLND</code> tokens on your favorite DEX. The community, however, encourages you to participate in Blender to improve everyone&rsquo;s privacy.</p>
+<h2 id="why-do-i-have-to-keep-eth-in-the-pool-for-5-days-to-farm">Why do I have to keep ETH in the pool for 5 days to farm?</h2>
+<p>This incentivises users to keep coins longer within Blender and should help to increase the privacy properties of Blender. A user can chose to withdraw the deposited coins earlier, at the loss of not being able to redeem <code>BLND</code> tokens.</p>
+<h2 id="why-can-i-only-farm-if-on-the-5th-day-of-my-deposit-age-there-is-another-deposit">Why can I only farm if on the 5th day of my deposit age there is another deposit?</h2>
+<p>That is due to the way the Merkle Tree updates operate in Blender.</p>
+<h2 id="can-an-external-observer-link-my-withdraw-and-farm-transactions">Can an external observer link my withdraw and farm transactions?</h2>
+<p>Yes, at the moment they are linkable.</p>
+<h2 id="how-many-blnd-tokens-can-i-get">How many <code>BLND</code> tokens can I get?</h2>
+<p>Please check out the <a href="/posts/token-economics/">token economics</a>.</p>
+<h2 id="does-blender-suffer-from-front-running-attacks">Does Blender suffer from front-running attacks?</h2>
+<p>The Blender contract stores a list of 100 recent Merkle roots, and should therefore be resilient to front-running attacks. Note that a front-running attack can only provoke a transaction fail, not a loss of funds.</p>
+<h2 id="how-many-deposits-does-blender-support-per-pool">How many deposits does Blender support per pool?</h2>
+<p>The Merkle tree of Blender has a height of 20, and therefore supports 2^20=1&rsquo;048&rsquo;576 deposits per pool. Once a pool is exhausted, the DAO can vote on a successor pool to follow.</p>
+<h2 id="what-are-my-risks">What are my risks?</h2>
+<p>The following is a possibly incomplete list of security risks of using Blender:</p>
+<ul>
+<li>Smart contract vulnerability risks.</li>
+<li>Governance token voting risk (someone amasses the majority of tokens).</li>
+<li>Aave liquidation risks of lent out assets.</li>
+<li>Currency value fluctuation of ETH.</li>
+</ul>
+<p>A possible incomplete list of privacy risks of using Blender:</p>
+<ul>
+<li>Network layer based deanonymization (IP addresses, etc)</li>
+<li>Privacy violating RPC endpoints, e.g. through Infura. The community recommends to deploy your own full Ethereum node and point your wallet towards that node.</li>
+<li>Compromised Blender website (you can download the code and run locally)</li>
+<li>Browser fingerprinting</li>
+<li>Hostile browser plugins/extensions</li>
+<li>Malicious relayers exploiting some or all of the above</li>
+</ul>
+<h2 id="isnt-depositing-the-eth-into-aave-a-privacy-risk">Isn&rsquo;t depositing the ETH into Aave a privacy risk?</h2>
+<p>The collective ETH within a pool is deposited into Aave from one account, the pool contract address. The longer coins are deposited, and not withdrawn, the more interests accrue. Note that depositing 1 ETH, always creates 1 aETH. When someone withdraws, the withdrawal receives the proportional interests accrued in the pool <em>collectively</em> - these are counted from the first deposit that occured into Aave, not necessarily since the first deposit of the user withdrawing. Therefore it&rsquo;s unlikely that this causes additional privacy risks.</p>
+<h2 id="can-i-transfer-my-deposited-coins">Can I transfer my deposited coins?</h2>
+<p>No, only deposit and withdraw.</p>
+]]></content></item><item><title>Privacy - What to look out for</title><link>/posts/privacy-and-what-to-look-out-for/</link><pubDate>Sat, 03 Oct 2020 12:42:00 +0200</pubDate><guid>/posts/privacy-and-what-to-look-out-for/</guid><description>Whenever you use your computer, mobile phone or tablet, you are leaking information. Many people have already warned us about global surveillance by state actors, and are risking their lives for us. Online business models are publicly known to track meticiously their users, as a means of generating revenue.
+This is by no means meant to be an exhaustive guide on how to protect your privacy, as its preferrable for you to find extensive resources that have done so very well.</description><content type="html"><![CDATA[<p>Whenever you use your computer, mobile phone or tablet, you are leaking information. Many people have already warned us about global surveillance by state actors, and are risking their lives for us. Online business models are publicly known to track meticiously their users, as a means of generating revenue.</p>
+<p>This is by no means meant to be an exhaustive guide on how to protect your privacy, as its preferrable for you to find extensive resources that have done so very well.</p>
+<p>Just keep in mind to use privacy protecting techniques, on all relevant layers, the hardware, network and application layer.</p>
+<p>On the network layer, you may want to use an onion router (Tor), multiple VPNs, different SSH tunnels, public WiFis or other. When using public WiFi you will want to change your WiFi&rsquo;s MAC address, which you can conveniently do with <code>ipconfig</code> on Unix (be careful about non-persistent settings). Use a clean OS installation whenever possible.</p>
+<p>On your browser side, you will want to not store history, links, caches, cookies, local storage etc.</p>
+<p>On the application layer, your Ethereum address may leak information. Be aware with which website you want to share your Ethereum address. Be aware of Infura, and other centralized blockchain services, they can observe which contract states you&rsquo;re after, and this again, is leaking side channel information. Deploy your own Ethereum full node and point your MetaMask to it.</p>
+<p>Finally a word on Blender&rsquo;s anonymity set. If you care about the best privacy, it&rsquo;s likely best you use the pool with the most deposits. Make sure to never pay gas from and address that is linkable to a deposit address. Use relayers if you can, and protect your network layer information while accessing them. Once you&rsquo;ve withdrawn assets, be careful of how you intertwine multiple withdrawals, as this might leak again more information.</p>
+]]></content></item><item><title>Token Economics</title><link>/posts/token-economics/</link><pubDate>Fri, 02 Oct 2020 12:42:00 +0200</pubDate><guid>/posts/token-economics/</guid><description>Why a token? A token has two primary purposes in Blender: (i) to decentralise the governance process, and (ii) to attract non-privacy aware users. By attracting different user demographics (namely privacy-sensitive users, and users interested in the token), the anonymity set of the mixer is likely to experience a more diverse and bigger set of users. This will then hopefully improve the privacy of all involved users, and hence provide a strong utility to the entire Ethereum ecosystem.</description><content type="html"><![CDATA[<h2 id="why-a-token">Why a token?</h2>
+<p>A token has two primary purposes in Blender: (i) to decentralise the governance process, and (ii) to attract non-privacy aware users. By attracting different user demographics (namely privacy-sensitive users, and users interested in the token), the anonymity set of the mixer is likely to experience a more diverse and bigger set of users. This will then hopefully improve the privacy of all involved users, and hence provide a strong utility to the entire Ethereum ecosystem.</p>
+<h2 id="blnd-token-structure"><code>BLND</code> Token Structure</h2>
+<p><code>BLND</code> is an ERC-20 token, which serves as governance token for Blender. The governance process is envisioned to vote on important system parameters, such
+as:</p>
+<ul>
+<li>Voting on which new pools should be added to Blender.</li>
+<li>Voting on the time parameter, which decides on how long a deposit needs to remain in Blender to become eligible for a token reward.</li>
+<li>Voting on other technical changes that might improve Blender (such as the choice of hash function).</li>
+<li>Addition/Removal of relayer (those that help paying for gas of the withdrawal and reward transactions).</li>
+</ul>
+<h2 id="token-allocation">Token Allocation</h2>
+<p>The total token supply amounts to 420 Million <code>BLND</code>. 200M <code>BLND</code> are divided
+equally among the 4 ETH pools (50M each), while 100M <code>BLND</code> are kept as
+a reserve that can be used by the DAO, for example to incentivise future pools.
+120M <code>BLND</code> tokens are available to early contributors of Blender. <code>BLND</code> is
+allocated on a first come first serve basis, following the below numbers per
+mixer pool.</p>
+<table>
+<thead>
+<tr>
+<th><code>BLND</code> for each pool</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32,436.36</td>
+<td>First 1,000 rewards per pool</td>
+</tr>
+<tr>
+<td>200</td>
+<td>For the subsequent 10,000 rewards per pool</td>
+</tr>
+<tr>
+<td>15</td>
+<td>For the next 1,037,576 rewards per pool</td>
+</tr>
+</tbody>
+</table>
+<p>Every pool (1, 10, 100 and 1000 ETH) can mint at most 50M <code>BLND</code> tokens. For example, if you perform a deposit into the 1000 ETH pool, wait 5 days, and then request a reward, you are allocated <code>32,436.36 BLND</code>, if you are <strong>one of the first 1,000 depositors in doing so</strong> (and if there&rsquo;s at least one deposit on your 5th day). This mechanism <em>incentivises users</em> to join a new pool, in an attempt to increase the anonymity set, and hence improve the overall privacy provided by the pool. Note that only the first 1,000 reward requests receive the highest reward, the contracts follow the first come first serve principle (FCFS).</p>
+<p>The DAO is planned as an instrument to vote for example on new pools. Note that the 0.1 ETH pool does not grant any <code>BLND</code> rewards.</p>
+<h3 id="where-to-purchase-blnd">Where to purchase <code>BLND</code>?</h3>
+<p>There&rsquo;s no need to purchase <code>BLND</code>, please deposit coins into BLND to receive a chance to better privacy plus a <code>BLND</code> reward.</p>
+]]></content></item><item><title>A Primer on Blender</title><link>/posts/a-primer-on-blnd/</link><pubDate>Thu, 01 Oct 2020 12:42:00 +0200</pubDate><guid>/posts/a-primer-on-blnd/</guid><description>Privacy matters. Permissionless blockchains, such as Bitcoin and Ethereum unfortunately are not private. The best you get is pseudonymity, which is not equivalent to anonymity. Many existing privacy solutions have been proposed, and they could be divided into two types of solutions:
+&amp;ldquo;Add-on privacy&amp;rdquo; for non-private blockchains. Real-world examples are Tornado Cash, Zether, etc. &amp;ldquo;Private-by-design&amp;rdquo; blockchains, e.g. Monero, ZCash, etc. Add-on privacy solutions have the advantage of being surrounded by a significant userbase on their underlying blockchain.</description><content type="html"><![CDATA[<p>Privacy matters. Permissionless blockchains, such as Bitcoin and Ethereum unfortunately are not private. The best you get is pseudonymity, which is not equivalent to anonymity. Many existing privacy solutions have been proposed, and they could be divided into two types of solutions:</p>
+<ol>
+<li>&ldquo;Add-on privacy&rdquo; for non-private blockchains. Real-world examples are Tornado Cash, Zether, etc.</li>
+<li>&ldquo;Private-by-design&rdquo; blockchains, e.g. Monero, ZCash, etc.</li>
+</ol>
+<p>Add-on privacy solutions have the advantage of being surrounded by a significant userbase on their underlying blockchain. At the same time, they have the disadvantage that they might be more expensive than their private-by-design counterparts. If users aren&rsquo;t careful, their privacy is endangered easily.</p>
+<p><strong>Blender</strong> is an add-on privacy solution. Blender is a fork of Tornado Cash, a popular mixer that inspired Blender. Blender has three major differences to Tornado Cash:</p>
+<ul>
+<li>Interest-bearing deposits: Blender ETH is added to <strong>Aave</strong> to yield interests. This reduces the opportunity loss of users using the mixer, and hence incentivises users to keep their assets longer in Blender. This behaviour in return increases the privacy properties of Blender for all participating users.</li>
+<li>Gas costs optimization: Blender uses the Poseidon hash function to reduce the gas costs.</li>
+<li>Governance token: Blender introduces the <code>BLND</code> token, which is awared to mixer participants that have deposited coins for at least <code>5</code> days. <code>Blender</code> is a governance token to decentralize Blender&rsquo;s decision making process. Blender&rsquo;s DAO could be used in the future to add new pools, to change the hash function, etc.</li>
+</ul>
+<h2 id="mixer-basics">Mixer Basics</h2>
+<p>In Blender, a user deposits a fixed amount of coins, for example 0.1, 1, 10, 100 or 1000 ETH. Later, the user can withdraw the same amount from the Blender contract to a new address. The Blender system makes sure that the link between the deposit address and the withdraw address is broken, i.e. a blockchain analysis should not show a link between both. Keep in mind that the users have to utilize Blender properly to make sure their privacy isn&rsquo;t violated through other side-channels (gas fee payment from neutral addresses, IP addresses, browser fingerprinting, etc.).</p>
+<h2 id="defi-farming-mixer">DeFi Farming Mixer</h2>
+<p>Blender is a mixer which allows a depositor to collect a reward, if a coin is deposited for at least <code>5</code> days. Note that farming can only be done if by the 5th day there is a new deposit in the pool. After collecting the DeFi farming reward, the user can then withdraw its deposited coin to a new address. Importantly, there is no link between the deposit and the reward address.</p>
+<p>The reward for mixing coins for at least <code>5</code> days is paid in <code>BLND</code> tokens. We refer to the upcoming post about the token economics for the full details on the <code>BLND</code> token.</p>
+<h3 id="blender--aave---">Blender + Aave =  🥰</h3>
+<p>In addition to the potential to receive a token reward, users that deposit into Blender also earn interests on their deposits. The interests are granted through Aave, where user deposits are integrated. While this increases the return, it also adds a layer of risk due to possible liquidations at Aave.</p>
+<h2 id="source-code">Source Code</h2>
+<p>You can find the complete source-code on Github: <a href="https://github.com/ourblender/ourblender.github.io">https://github.com/ourblender/ourblender.github.io</a>. The contracts are verified and open source on Etherscan.</p>
+]]></content></item></channel></rss>

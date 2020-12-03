@@ -1,0 +1,47 @@
+{
+  "contractName": "ALendingPool",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_reserve",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint16",
+          "name": "_referralCode",
+          "type": "uint16"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.17;\n\nimport \"./BlenderCore.sol\";\nimport \"@openzeppelin/contracts/math/SafeMath.sol\";\n\ninterface AToken {\n    function balanceOf(address _user) external view returns (uint256);\n\n    function redeem(uint256 _amount) external;\n}\n\ninterface ALendingPool {\n    function deposit(\n        address _reserve,\n        uint256 _amount,\n        uint16 _referralCode\n    ) external payable;\n}\n\ninterface ALendingPoolAddressesProvider {\n    function getLendingPool() external view returns (address);\n}\n\ncontract AETHBlender is Initializable, BlenderCore {\n    ALendingPoolAddressesProvider public lendingPoolAddressesProvider;\n    AToken public aToken;\n    address public reserve;\n    uint256 public depositors;\n\n    // DO NOT implement a constructor because this is an upgradable logic.\n    // Use the initialize function as a constructor.\n    constructor() public {}\n\n    function initialize(\n        WVerifier _withdrawVerifier,\n        RVerifier _rewardVerifier,\n        uint256 _d_denomination,\n        uint32 _merkleTreeHeight,\n        uint32 _blockCount,\n        address _operator,\n        address _blnd,\n        address _aToken,\n        address _reserve,\n        uint256 _firstStageReward,\n        uint256 _secondStageReward,\n        uint256 _thirdStageReward,\n        uint256 _firstStageDepositors,\n        uint256 _secondStageDepositors\n    ) public {\n        // call the initialize function of the parent contract (the constructor of the parent contract)\n        BlenderCore._initialize(\n            _withdrawVerifier,\n            _rewardVerifier,\n            _d_denomination,\n            _merkleTreeHeight,\n            _blockCount,\n            _operator,\n            _blnd,\n            _firstStageReward,\n            _secondStageReward,\n            _thirdStageReward,\n            _firstStageDepositors,\n            _secondStageDepositors\n        );\n        // constructor logic\n        lendingPoolAddressesProvider = ALendingPoolAddressesProvider(\n            0x24a42fD28C976A61Df5D00D0599C34c4f90748c8\n        );\n        aToken = AToken(_aToken);\n        reserve = _reserve;\n    }\n\n    function _processDeposit() internal {\n        require(\n            msg.value == d_denomination,\n            \"Please send `mixDenomination` ETH along with transaction\"\n        );\n        // Deposit all the balance\n        uint256 balance = address(this).balance;\n        ALendingPool(lendingPoolAddressesProvider.getLendingPool())\n            .deposit\n            .value(balance)(reserve, balance, 0);\n        depositors++;\n    }\n\n    function _processWithdraw(\n        address payable _recipient,\n        address payable _relayer,\n        uint256 _fee,\n        uint256 _refund\n    ) internal {\n        require(\n            msg.value == 0,\n            \"Message value is supposed to be zero for ETH instance\"\n        );\n        require(\n            _refund == 0,\n            \"Refund value is supposed to be zero for ETH instance\"\n        );\n        require(depositors > 0, \"Number of depositors must be positive\");\n\n        uint256 beforeBalance = address(this).balance;\n        uint256 aBalance = aToken.balanceOf(address(this));\n        uint256 redeemAmount = SafeMath.div(aBalance, depositors);\n        aToken.redeem(redeemAmount);\n        uint256 afterBalance = address(this).balance;\n        uint256 redeemedAmount = SafeMath.sub(afterBalance, beforeBalance);\n\n        (bool success, ) = _recipient.call.value(redeemedAmount - _fee)(\"\");\n        require(success, \"payment to _recipient did not go thru\");\n        if (_fee > 0) {\n            (success, ) = _relayer.call.value(_fee)(\"\");\n            require(success, \"payment to _relayer did not go thru\");\n        }\n        depositors--;\n    }\n\n    function() external payable {}\n}\n",
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.4",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

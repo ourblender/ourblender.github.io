@@ -1,0 +1,1129 @@
+{
+  "contractName": "BlenderCore",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "blockCount",
+          "type": "uint32"
+        }
+      ],
+      "name": "BlockCountUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "commitment",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "leafIndex",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "relayer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "permitted",
+          "type": "bool"
+        }
+      ],
+      "name": "RelayerUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "rewardNullifierHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "relayer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "Reward",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "updateAtBlock",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "newRewardRoot",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RewardUpdate",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "withdrawNullifierHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "rewardNullifierHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "relayer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdrawal",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "r_denomination",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "leafIndex",
+          "type": "uint32"
+        }
+      ],
+      "name": "rewardUpdate",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "FIELD_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ROOT_HISTORY_SIZE",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ZERO_VALUE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "blnd",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "blockCount",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "commitments",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "currentRootIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "d_denomination",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "filledSubtrees",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "firstStageDepositors",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "firstStageReward",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getLastRoot",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_left",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_right",
+          "type": "bytes32"
+        }
+      ],
+      "name": "hashLeftRight",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_root",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isKnownRoot",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_rroot",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isRewardRoot",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "levels",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "nextIndex",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "nullifierHashes",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "operator",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "r_denomination",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "relayerWhitelist",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "relayerWhitelistingEnabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardCounter",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardCurrentBlocknum",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardCurrentRoot",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardNextBlocknum",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardNextRoot",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "rewardNullifierHashes",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "rewardVerifier",
+      "outputs": [
+        {
+          "internalType": "contract RVerifier",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "roots",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "secondStageDepositors",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "secondStageReward",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "thirdStageReward",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "withdrawVerifier",
+      "outputs": [
+        {
+          "internalType": "contract WVerifier",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "zeros",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_commitment",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_proof",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_root",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_wdrHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_rwdHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_relayer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_refund",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_rproof",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_rroot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "_rwdHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_relayer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_refund",
+          "type": "uint256"
+        }
+      ],
+      "name": "reward",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_wdrHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isSpent",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_rwdHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isRedeem",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "_nullifierHashes",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "isSpentArray",
+      "outputs": [
+        {
+          "internalType": "bool[]",
+          "name": "spent",
+          "type": "bool[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "_nullifierHashes",
+          "type": "bytes32[]"
+        }
+      ],
+      "name": "isRedeemArray",
+      "outputs": [
+        {
+          "internalType": "bool[]",
+          "name": "redeem",
+          "type": "bool[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newVerifier",
+          "type": "address"
+        }
+      ],
+      "name": "updateWithdrawVerifier",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newVerifier",
+          "type": "address"
+        }
+      ],
+      "name": "updateRewardVerifier",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newOperator",
+          "type": "address"
+        }
+      ],
+      "name": "changeOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "enableRelayerWhitelisting",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "disableRelayerWhitelisting",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_relayer",
+          "type": "address"
+        }
+      ],
+      "name": "addRelayer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_relayer",
+          "type": "address"
+        }
+      ],
+      "name": "removeRelayer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "_blockCount",
+          "type": "uint32"
+        }
+      ],
+      "name": "setBlockCount",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.17;\n\nimport \"./MerkleTreeWithHistory.sol\";\nimport \"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\";\nimport \"./proxy/Initializable.sol\";\nimport \"./UpgradableReentrancyGuard.sol\";\n\ninterface WVerifier {\n    function verifyProof(bytes calldata _proof, uint256[7] calldata _input)\n        external\n        returns (bool);\n}\n\ninterface RVerifier {\n    function verifyProof(bytes calldata _proof, uint256[6] calldata _input)\n        external\n        returns (bool);\n}\n\ncontract BlenderCore is MerkleTreeWithHistory, UpgradableReentrancyGuard {\n    // Amount of deposit\n    uint256 public d_denomination;\n    // Amount of reward\n    uint256 public r_denomination;\n    // Withdraw nullifier list\n    mapping(bytes32 => bool) public nullifierHashes;\n    // Reward nullifier list\n    mapping(bytes32 => bool) public rewardNullifierHashes;\n    // Commitments\n    mapping(bytes32 => bool) public commitments;\n    // withdraw Verifier\n    WVerifier public withdrawVerifier;\n    // reward verifier\n    RVerifier public rewardVerifier;\n    // reward counter\n    uint32 public rewardCounter;\n    // operator can update snark verification key\n    // after the final trusted setup ceremony operator rights are supposed to be transferred to zero address\n    address public operator;\n    modifier onlyOperator {\n        require(\n            msg.sender == operator,\n            \"Only operator can call this function.\"\n        );\n        _;\n    }\n    // relayer whitelisting\n    bool public relayerWhitelistingEnabled;\n    mapping(address => bool) public relayerWhitelist;\n    modifier onlyWhitelistedRelayer(address _relayer) {\n        if (relayerWhitelistingEnabled) {\n            require(relayerWhitelist[_relayer], \"Not a whitelisted relayer\");\n        }\n        _;\n    }\n\n    address public blnd;\n\n    uint256 public firstStageReward;\n    uint256 public secondStageReward;\n    uint256 public thirdStageReward;\n    uint256 public firstStageDepositors;\n    uint256 public secondStageDepositors;\n\n    event Deposit(\n        bytes32 indexed commitment,\n        uint32 leafIndex,\n        uint256 timestamp\n    );\n    event Reward(\n        address to,\n        bytes32 rewardNullifierHash,\n        address indexed relayer,\n        uint256 fee\n    );\n    event Withdrawal(\n        address to,\n        bytes32 withdrawNullifierHash,\n        bytes32 rewardNullifierHash,\n        address indexed relayer,\n        uint256 fee\n    );\n    event rewardUpdate(uint256 r_denomination, uint32 leafIndex);\n    event RelayerUpdate(address relayer, bool permitted);\n\n    // DO NOT implement a constructor because this is an upgradable logic.\n    // Use the initialize function as a constructor.\n    constructor() public {}\n\n    /**\n     * @dev The initializer\n     * @param _withdrawVerifier the address of SNARK verifier for this contract\n     * @param _rewardVerifier the address of SNARK verifier for this contract\n     * @param _d_denomination transfer amount for each deposit\n     * @param _merkleTreeHeight the height of deposits Merkle Tree\n     * @param _operator operator address (see operator comment above)\n     */\n    function _initialize(\n        WVerifier _withdrawVerifier, // withdraw verifier\n        RVerifier _rewardVerifier, // reward verifier\n        uint256 _d_denomination,\n        uint32 _merkleTreeHeight,\n        uint32 _blockCount,\n        address _operator,\n        address _blnd,\n        uint256 _firstStageReward,\n        uint256 _secondStageReward,\n        uint256 _thirdStageReward,\n        uint256 _firstStageDepositors,\n        uint256 _secondStageDepositors\n    ) internal initializer {\n        // call the initialize function of the parent contract (the constructor of the parent contract)\n        MerkleTreeWithHistory._initialize(_merkleTreeHeight, _blockCount);\n        // constructor logic\n        require(\n            _d_denomination > 0,\n            \"Deposit denomination should be greater than 0\"\n        );\n        firstStageReward = _firstStageReward;\n        secondStageReward = _secondStageReward;\n        thirdStageReward = _thirdStageReward;\n        firstStageDepositors = _firstStageDepositors;\n        secondStageDepositors = _secondStageDepositors;\n\n        withdrawVerifier = _withdrawVerifier;\n        rewardVerifier = _rewardVerifier;\n        operator = _operator;\n        d_denomination = _d_denomination;\n        r_denomination = firstStageReward;\n        blnd = _blnd;\n    }\n\n    // Should be unchanged\n    /**\n      @dev Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.\n      @param _commitment the note commitment, which is PedersenHash(nullifier + secret)\n    */\n    function deposit(bytes32 _commitment) external payable nonReentrant {\n        require(!commitments[_commitment], \"The commitment has been submitted\");\n        uint32 insertedIndex = _insert(_commitment);\n        commitments[_commitment] = true;\n        _processDeposit();\n        emit Deposit(_commitment, insertedIndex, block.timestamp);\n    }\n\n    /** @dev this function is defined in a child contract */\n    function _processDeposit() internal;\n\n    /**\n      @dev Withdraw a deposit from the contract. `proof` is a zkSNARK proof data, and input is an array of circuit public inputs\n      `input` array consists of:\n        - merkle root of all deposits in the contract\n        - hash of unique deposit nullifier to prevent double spends\n        - the recipient of funds\n        - optional fee that goes to the transaction sender (usually a relay)\n    */\n    function withdraw(\n        bytes calldata _proof,\n        bytes32 _root,\n        bytes32 _wdrHash,\n        bytes32 _rwdHash,\n        address payable _recipient,\n        address payable _relayer,\n        uint256 _fee,\n        uint256 _refund\n    ) external payable nonReentrant onlyWhitelistedRelayer(_relayer) {\n        require(_fee <= d_denomination, \"Fee exceeds transfer value\");\n        require(\n            !nullifierHashes[_wdrHash],\n            \"The withdraw note has been already spent for withdrawing\"\n        );\n        require(\n            !nullifierHashes[_rwdHash],\n            \"The reward note has been already spent for withdrawing\"\n        );\n        require(isKnownRoot(_root), \"Cannot find your merkle root\");\n        // Make sure to use a recent one\n        require(\n            withdrawVerifier.verifyProof(\n                _proof,\n                [\n                    uint256(_root),\n                    uint256(_wdrHash),\n                    uint256(_rwdHash),\n                    uint256(_recipient),\n                    uint256(_relayer),\n                    _fee,\n                    _refund\n                ]\n            ),\n            \"Invalid withdraw proof\"\n        );\n        nullifierHashes[_wdrHash] = true;\n        //\n        nullifierHashes[_rwdHash] = true;\n        //\n        rewardNullifierHashes[_rwdHash] = true;\n        // cannot obtain reward using this hash anymore\n        _processWithdraw(_recipient, _relayer, _fee, _refund);\n        emit Withdrawal(_recipient, _wdrHash, _rwdHash, _relayer, _fee);\n    }\n\n    function reward(\n        bytes calldata _rproof,\n        bytes32 _rroot,\n        bytes32 _rwdHash,\n        address payable _recipient,\n        address payable _relayer,\n        uint256 _fee,\n        uint256 _refund\n    ) external payable nonReentrant onlyWhitelistedRelayer(_relayer) {\n        require(_fee <= r_denomination, \"Fee exceeds transfer value\");\n        require(\n            !rewardNullifierHashes[_rwdHash],\n            \"The reward note has been already redeemed\"\n        );\n        require(isRewardRoot(_rroot), \"Cannot find your merkle root\");\n        // Make sure to use a recent one\n        require(\n            rewardVerifier.verifyProof(\n                _rproof,\n                [\n                    uint256(_rroot),\n                    uint256(_rwdHash),\n                    uint256(_recipient),\n                    uint256(_relayer),\n                    _fee,\n                    _refund\n                ]\n            ),\n            \"Invalid reward proof\"\n        );\n        // update reward at certain checkpoints\n        if (rewardCounter == firstStageDepositors) {\n            r_denomination = secondStageReward;\n            emit rewardUpdate(r_denomination, rewardCounter);\n        }\n\n        if (rewardCounter == secondStageDepositors) {\n            r_denomination = thirdStageReward;\n            emit rewardUpdate(r_denomination, rewardCounter);\n        }\n        // cannot obtain reward using this hash anymore\n        rewardNullifierHashes[_rwdHash] = true;\n        _processReward(_recipient, _relayer, _fee, _refund);\n        rewardCounter = rewardCounter + 1;\n        emit Reward(_recipient, _rwdHash, _relayer, _fee);\n    }\n\n    /** @dev this function is defined in a child contract */\n    function _processWithdraw(\n        address payable _recipient,\n        address payable _relayer,\n        uint256 _fee,\n        uint256 _refund\n    ) internal;\n\n    function _processReward(\n        address payable _recipient,\n        address payable _relayer,\n        uint256 _fee,\n        uint256 _refund\n    ) internal {\n        require(\n            msg.value == _refund,\n            \"Incorrect refund amount received by the contract\"\n        );\n        SafeERC20.safeTransfer(IERC20(blnd), _recipient, r_denomination - _fee);\n        if (_fee > 0) {\n            SafeERC20.safeTransfer(IERC20(blnd), _relayer, _fee);\n        }\n        // to prevent attacker from burning relayer eth in fee\n        if (_refund > 0) {\n            (bool success, ) = _recipient.call.value(_refund)(\"\");\n            if (!success) {\n                _relayer.transfer(_refund);\n            }\n        }\n    }\n\n    /** @dev whether a note is already spent */\n    // TODO blnd may need to verify two nullifier hashes is needed\n    function isSpent(bytes32 _wdrHash) public view returns (bool) {\n        return nullifierHashes[_wdrHash];\n    }\n\n    function isRedeem(bytes32 _rwdHash) public view returns (bool) {\n        return rewardNullifierHashes[_rwdHash];\n    }\n\n    /** @dev whether an array of notes is already spent */\n    function isSpentArray(bytes32[] calldata _nullifierHashes)\n        external\n        view\n        returns (bool[] memory spent)\n    {\n        spent = new bool[](_nullifierHashes.length);\n        for (uint256 i = 0; i < _nullifierHashes.length; i++) {\n            if (isSpent(_nullifierHashes[i])) {\n                spent[i] = true;\n            }\n        }\n    }\n\n    /** @dev whether an array of notes is already spent */\n    function isRedeemArray(bytes32[] calldata _nullifierHashes)\n        external\n        view\n        returns (bool[] memory redeem)\n    {\n        redeem = new bool[](_nullifierHashes.length);\n        for (uint256 i = 0; i < _nullifierHashes.length; i++) {\n            if (isRedeem(_nullifierHashes[i])) {\n                redeem[i] = true;\n            }\n        }\n    }\n\n    /**\n      @dev allow operator to update SNARK verification keys. This is needed to update keys after the final trusted setup ceremony is held.\n      After that operator rights are supposed to be transferred to zero address\n    */\n    // update withdraw verifier\n    function updateWithdrawVerifier(address _newVerifier)\n        external\n        onlyOperator\n    {\n        withdrawVerifier = WVerifier(_newVerifier);\n    }\n\n    // update reward verifier\n    function updateRewardVerifier(address _newVerifier) external onlyOperator {\n        rewardVerifier = RVerifier(_newVerifier);\n    }\n\n    /** @dev operator can change his address */\n    function changeOperator(address _newOperator) external onlyOperator {\n        operator = _newOperator;\n    }\n\n    /**\n     * @dev operator can enable relayer whitelisting\n     */\n    function enableRelayerWhitelisting() external onlyOperator nonReentrant {\n        relayerWhitelistingEnabled = true;\n    }\n\n    /**\n     * @dev operator can disable relayer whitelisting\n     */\n    function disableRelayerWhitelisting() external onlyOperator nonReentrant {\n        relayerWhitelistingEnabled = false;\n    }\n\n    /**\n     * @dev operator can add a relayer to the whitelist.\n     */\n    function addRelayer(address _relayer) external onlyOperator nonReentrant {\n        relayerWhitelist[_relayer] = true;\n        emit RelayerUpdate(_relayer, relayerWhitelist[_relayer]);\n    }\n\n    /**\n     * @dev operator can remove a relayer from the whitelist.\n     */\n    function removeRelayer(address _relayer)\n        external\n        onlyOperator\n        nonReentrant\n    {\n        relayerWhitelist[_relayer] = false;\n        emit RelayerUpdate(_relayer, relayerWhitelist[_relayer]);\n    }\n\n    /**\n     * @dev operator can change the number of blocks between the current and next reward roots\n     */\n    function setBlockCount(uint32 _blockCount)\n        external\n        onlyOperator\n        nonReentrant\n    {\n        _setBlockCount(_blockCount);\n    }\n}\n",
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.2.4",
+  "devdoc": {
+    "methods": {
+      "addRelayer(address)": {
+        "details": "operator can add a relayer to the whitelist."
+      },
+      "changeOperator(address)": {
+        "details": "operator can change his address "
+      },
+      "deposit(bytes32)": {
+        "details": "Deposit funds into the contract. The caller must send (for ETH) or approve (for ERC20) value equal to or `denomination` of this instance.",
+        "params": {
+          "_commitment": "the note commitment, which is PedersenHash(nullifier + secret)"
+        }
+      },
+      "disableRelayerWhitelisting()": {
+        "details": "operator can disable relayer whitelisting"
+      },
+      "enableRelayerWhitelisting()": {
+        "details": "operator can enable relayer whitelisting"
+      },
+      "getLastRoot()": {
+        "details": "Returns the last root"
+      },
+      "isKnownRoot(bytes32)": {
+        "details": "Whether the root is present in the root history"
+      },
+      "isRedeemArray(bytes32[])": {
+        "details": "whether an array of notes is already spent "
+      },
+      "isSpent(bytes32)": {
+        "details": "whether a note is already spent "
+      },
+      "isSpentArray(bytes32[])": {
+        "details": "whether an array of notes is already spent "
+      },
+      "removeRelayer(address)": {
+        "details": "operator can remove a relayer from the whitelist."
+      },
+      "setBlockCount(uint32)": {
+        "details": "operator can change the number of blocks between the current and next reward roots"
+      },
+      "updateWithdrawVerifier(address)": {
+        "details": "allow operator to update SNARK verification keys. This is needed to update keys after the final trusted setup ceremony is held. After that operator rights are supposed to be transferred to zero address"
+      },
+      "withdraw(bytes,bytes32,bytes32,bytes32,address,address,uint256,uint256)": {
+        "details": "Withdraw a deposit from the contract. `proof` is a zkSNARK proof data, and input is an array of circuit public inputs `input` array consists of: - merkle root of all deposits in the contract - hash of unique deposit nullifier to prevent double spends - the recipient of funds - optional fee that goes to the transaction sender (usually a relay)"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
